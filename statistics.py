@@ -110,3 +110,31 @@ def zscore(data, x):
     zscore = 0
     zscore = (x - mean) / stdev
     print('zscore: ' + str(zscore))
+
+#linear regression accepting points [(x0,y0), (x1,y1)]
+def regression_linear(points):
+    x = []
+    y = []
+    for i in a:
+        x.append(i[0])
+        y.append(i[1])
+
+    sumxy = 0
+    sumx = 0
+    sumy = 0
+    sumx2 = 0
+    n = 0
+    for i in range(len(x)):
+        sumxy = sumxy + x[i] * y[i]
+        sumx += x[i]
+        sumy += y[i]
+        sumx2 += math.pow(x[i], 2)
+        n += 1
+    numer = sumxy - (sumx * sumy / n)
+    denom = sumx2 - (math.pow(sumx, 2) / n)
+    
+    b1 = round(numer / denom, 4)
+    b0 = (sumy/n) - b1 * (sumx/n)
+
+    print('b1: ' + str(b1))
+    print('b0: ' + str(b0))
